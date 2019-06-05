@@ -43,14 +43,15 @@ function getFunc() {
 
 getFunc(); 
 
-*/
+
 function sum(a) {
   return function(b) {
     return a + b;
   }
 }
-console.log(sum(5))
-/*
+console.log(sum(5)(1))
+
+
 function makeBuffer() {
   var result = '';
   return function buffer( newValue ){
@@ -105,13 +106,33 @@ var arr = [1, 2, 3, 4, 5, 6, 7];
 function filter(arr, func) {
   return arr.filter(func);
 }
-
+alert(filter(arr, function(a) {
+  return a % 2 == 0
+})); // 2,4,6
 function inBetween(a,b) {
+  var result =[];
   return arr.filter(function(c){
     return (c >= a) && (c <= b);
   })
 }
-alert( filter(arr, inBetween(3, 6)) ); // 3,4,5,6
-/*alert(filter(arr, function(a) {
-  return a % 2 == 0
-})); // 2,4,6*/
+alert( filter(arr, inBetween(3, 6)) ); */
+
+
+function makeArmy() {
+
+  var shooters = [];
+  
+  for (var i = 0; i < 10; i++) {
+    var shooter = function() { // функция-стрелок
+      alert( i ); // выводит свой номер
+    };
+    shooters.push(shooter);
+  }
+  return shooters;
+}
+
+var army = makeArmy();
+
+army[0](); // стрелок выводит 10, а должен 0
+army[5](); // стрелок выводит 10...
+// .. все стрелки выводят 10 вместо 0,1,2...9
