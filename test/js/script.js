@@ -88,7 +88,7 @@ var users = [{
   age: 18
 }];
 
-/*users.sort(function(a, b) {
+users.sort(function(a, b) {
   return a.age > b.age ? 1 : -1;
 });
 console.log(users)
@@ -102,23 +102,39 @@ users.sort(byField('age'));
 users.forEach(function(user) {
   alert( user.name );
 });
+*/
+
 var arr = [1, 2, 3, 4, 5, 6, 7];
+
 function filter(arr, func) {
-  return arr.filter(func);
+  var result = [];
+  for(var i = 0; i < arr.length; i++) {
+    if(func(arr[i])) {
+    result.push(arr[i])
+  }
+  }
+  return result;
 }
+
 alert(filter(arr, function(a) {
   return a % 2 == 0
 })); // 2,4,6
+
 function inBetween(a,b) {
-  var result =[];
-  return arr.filter(function(c){
+  return function(c){
     return (c >= a) && (c <= b);
-  })
+  }
 }
-alert( filter(arr, inBetween(3, 6)) ); */
 
+function inArray(array){
+  return function(a){
+    return array.indexOf(a) != -1;
+  }
+}
+alert( filter(arr, inBetween(3, 6)) ); 
 
-function makeArmy() {
+alert( filter(arr, inArray([0, 0, 3, 4])) );
+/*function makeArmy() {
 
   var shooters = [];
   
@@ -136,3 +152,6 @@ var army = makeArmy();
 army[0](); // стрелок выводит 10, а должен 0
 army[5](); // стрелок выводит 10...
 // .. все стрелки выводят 10 вместо 0,1,2...9
+console.log(`1${1,2,3}2${4}`)
+var test = (function(){})();
+console.log(typeof(test))*/
