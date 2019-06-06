@@ -18,6 +18,8 @@
 => Заполнение LE{variables: values} => Выполнение функции 
 => При доступе к переменной происходит поиск в текущем LE, если не находит то ищет во внешнем LE
 
+При создании функции с использованием new Function, её свойство [[Scope]] ссылается не на текущий LexicalEnvironment, а на window.
+
 
 function makeCounter() {//ОБЪЯВЛЯЮ новую функцию
   // LexicalEnvironment = { currentCount: undefined }
