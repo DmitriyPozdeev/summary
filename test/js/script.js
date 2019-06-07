@@ -102,7 +102,7 @@ users.sort(byField('age'));
 users.forEach(function(user) {
   alert( user.name );
 });
-*/
+
 
 var arr = [1, 2, 3, 4, 5, 6, 7];
 
@@ -134,7 +134,7 @@ function inArray(array){
 alert( filter(arr, inBetween(3, 6)) ); 
 
 alert( filter(arr, inArray([0, 0, 3, 4])) );
-/*function makeArmy() {
+function makeArmy() {
 
   var shooters = [];
   
@@ -152,6 +152,3 @@ var army = makeArmy();
 army[0](); // стрелок выводит 10, а должен 0
 army[5](); // стрелок выводит 10...
 // .. все стрелки выводят 10 вместо 0,1,2...9
-console.log(`1${1,2,3}2${4}`)
-var test = (function(){})();
-console.log(typeof(test))*/
