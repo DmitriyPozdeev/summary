@@ -48,3 +48,7 @@ $ cat output
 -bash: cd: lala: No such file or directory
 
 Пайплайн(Конвейер) Pipeline
+
+$ grep alias .bashrc | grep color
+
+
