@@ -150,8 +150,48 @@ function makeArmy() {
 var army = makeArmy();
 
 army[0](); // стрелок выводит 10, а должен 0
-army[5](); */    // стрелок выводит 10...
+army[5]();     // стрелок выводит 10...
 // .. все стрелки выводят 10 вместо 0,1,2...9
 let a = (1,5,8 - 1) * 2;
 
 alert(a);
+
+var arr = ["a", "b", function() {
+  alert( this );
+}];
+
+arr.push(function() {
+  alert( 1 );
+})
+
+arr[2](); // "a","b",function
+
+const reverseInt = (str) => {
+  let arr = [],
+      n,
+      result = '';
+      str += '';
+      str[0] === '-' ? n = 1 :  n = 0;
+  for ( let i = str.length - 1; i >= n; i -- ) {
+   result += str[i];
+  }
+  str[0] === '-' ? result = -result :  result = +result;
+  return result;
+}
+console.log(reverseInt(-12));
+*/
+
+const invertCase = (str) => {
+  let result = '';
+  for (let i = 0; str.length; i +=1) {
+    if (str[i].toUpperCase() === str[i].toLowerCase) {
+      result += str[i];
+    } else if (str[i].toUpperCase() === str[i]){
+      result += str[i].toLowerCase;
+    } else {
+      result += str[i].toUpperCase;
+    }
+  }
+  return result;
+}
+console.log(invertCase('ПрИВЕтиЩе'));
