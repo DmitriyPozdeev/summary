@@ -179,19 +179,35 @@ const reverseInt = (str) => {
   return result;
 }
 console.log(reverseInt(-12));
-*/
+
 
 const invertCase = (str) => {
   let result = '';
-  for (let i = 0; str.length; i +=1) {
+  for (let i = 0; i < str.length; i +=1) {
     if (str[i].toUpperCase() === str[i].toLowerCase) {
       result += str[i];
     } else if (str[i].toUpperCase() === str[i]){
-      result += str[i].toLowerCase;
+      result += str[i].toLowerCase();
     } else {
-      result += str[i].toUpperCase;
+      result += str[i].toUpperCase();
     }
   }
   return result;
 }
 console.log(invertCase('ПрИВЕтиЩе'));
+*/
+
+const dnaToRna = (str) => {
+ // str === '' ? return '';
+  const dna = ['A', 'C', 'G', 'T'];
+  outer: for (let i = 0; i < str.length; i += 1) {
+    for (let j = 0; j < dna.length; j += 1) {
+      if (str[i] === dna[j]) {
+        break outer;
+      } 
+    } 
+    return null
+  }
+  //const rna = ['U', 'G', 'C', 'A'];
+}
+console.log(dnaToRna('AVG'));
