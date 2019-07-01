@@ -195,7 +195,7 @@ const invertCase = (str) => {
   return result;
 }
 console.log(invertCase('ПрИВЕтиЩе'));
-*/
+
 
 const dnaToRna = (str) => {
  // str === '' ? return '';
@@ -211,3 +211,26 @@ const dnaToRna = (str) => {
   //const rna = ['U', 'G', 'C', 'A'];
 }
 console.log(dnaToRna('AVG'));
+
+2 4
+001111
+
+010111
+011011
+011101
+011110
+1*/
+const withoutTwoZeros = (zero, one) => {
+  let arr = [],
+      result = 0;
+  if ((zero > 1) && (one < zero - 1)) return result; 
+  for (let i = 0; i < zero; i += 1) {
+    arr.push(0);
+  }
+  for (let i = 0; i < one; i += 1) {
+    arr.push(1);
+  }
+  console.log(arr);
+  
+}
+console.log(withoutTwoZeros(4, 3));
