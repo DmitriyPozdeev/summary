@@ -212,25 +212,25 @@ const dnaToRna = (str) => {
 }
 console.log(dnaToRna('AVG'));
 
-2 4
-001111
+3 5
+01010111 1010111 1101011
 
 010111
 011011
 011101
 011110
+
+
 1*/
 const withoutTwoZeros = (zero, one) => {
-  let arr = [],
+  let variant = '',
       result = 0;
   if ((zero > 1) && (one < zero - 1)) return result; 
-  for (let i = 0; i < zero; i += 1) {
-    arr.push(0);
+  const createEl = (count) => {
+    for (let i = 0; i < zero + one; i += 1) {
+      variant += '1';
+    }
   }
-  for (let i = 0; i < one; i += 1) {
-    arr.push(1);
-  }
-  console.log(arr);
-  
+
 }
-console.log(withoutTwoZeros(4, 3));
+console.log(withoutTwoZeros(2, 4));
