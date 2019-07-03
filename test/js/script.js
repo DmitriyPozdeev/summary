@@ -228,9 +228,33 @@ const withoutTwoZeros = (zero, one) => {
   if ((zero > 1) && (one < zero - 1)) return result; 
  // const createEl = (count) => {
     for (let i = 0; i < zero + one; i += 1) {
-      i % 4 ? variant += '1' : variant += '0'
+      i <= zero ? variant += '0' : variant += '1'
     }
  // }
 return variant
 }
-console.log(withoutTwoZeros(3, 4));
+console.log(withoutTwoZeros(5, 6));
+
+
+1 1 // 2
+2 1 // 1
+3 1 // 0
+
+1 2 // 3  011 101 110
+2 2 // 3  1010 0110 0101
+3 2 // 1   00011 
+4 2 // 0
+
+1 3 // 4 0111 1011 1101 1110
+2 3 // 6  01011 10101 11010  01101 01110 10110
+3 3 // 2  010101 101010 
+4 3 // 1
+5 3 // 0
+
+1 4 // 5 01111 10111 11011 11101 11110
+2 4 // 10
+3 4 // 8 0101011 1010101 1101010 0110101 011101 011110 0101101 0101110 
+4 4 // 2 01010101
+5 4 // 1
+6 4 // 0
+
