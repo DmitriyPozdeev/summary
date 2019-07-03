@@ -226,11 +226,11 @@ const withoutTwoZeros = (zero, one) => {
   let variant = '',
       result = 0;
   if ((zero > 1) && (one < zero - 1)) return result; 
-  const createEl = (count) => {
+ // const createEl = (count) => {
     for (let i = 0; i < zero + one; i += 1) {
-      variant += '1';
+      i % 4 ? variant += '1' : variant += '0'
     }
-  }
-
+ // }
+return variant
 }
-console.log(withoutTwoZeros(2, 4));
+console.log(withoutTwoZeros(3, 4));
