@@ -266,18 +266,13 @@ console.log(withoutTwoZeros(6, 7));
 
 const isPalindrome = (str) => {
  console.log(str);
-  //console.log(str.length);
- // console.log(str.length < 2)
   if (str.length < 2) {
     return true
   }
-
-  if (str[0] != str[str.length-1]) {
-    console.log(str[str.length-1])
-    return 44
-  } 
-      isPalindrome(str.substring(1, str.length - 1));
-     
-  
+  if (str[0] != str[str.length - 1]) {
+    return false
+  } else {
+    return isPalindrome(str.substring(1, str.length - 1));
+  }
 }
-console.log(isPalindrome('aaada'));
+console.log(isPalindrome('radar'));
