@@ -221,7 +221,7 @@ console.log(dnaToRna('AVG'));
 011110
 
 
-1*/
+1
 const withoutTwoZeros = (zero, one) => {
   //let variant = '',
       result = 0,
@@ -234,7 +234,7 @@ const withoutTwoZeros = (zero, one) => {
       i < zero * 2 && i % 2 === 0 ? variant += '0' : variant += '1'
     }
     while ()
- // }*/
+ // }
 
 return variant
 }
@@ -242,7 +242,7 @@ console.log(withoutTwoZeros(6, 7));
 
 00 - 1 эл
 000 
-/*1 1 // 2  / 0
+1 1 // 2  / 0
 2 1 // 1  / 1
 3 1 // 0  / 2
 
@@ -264,3 +264,20 @@ console.log(withoutTwoZeros(6, 7));
 5 4 // 1 /4
 6 4 // 0 /5*/
 
+const isPalindrome = (str) => {
+ console.log(str);
+  //console.log(str.length);
+ // console.log(str.length < 2)
+  if (str.length < 2) {
+    return true
+  }
+
+  if (str[0] != str[str.length-1]) {
+    console.log(str[str.length-1])
+    return 44
+  } 
+      isPalindrome(str.substring(1, str.length - 1));
+     
+  
+}
+console.log(isPalindrome('aaada'));
