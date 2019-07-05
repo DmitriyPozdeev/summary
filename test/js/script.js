@@ -262,7 +262,7 @@ console.log(withoutTwoZeros(6, 7));
 3 4 // 8 0101011 1010101 1101010 0110101 0101101 0101110 011101 011110   /2
 4 4 // 2 01010101 /3
 5 4 // 1 /4
-6 4 // 0 /5*/
+6 4 // 0 /5
 
 const isPalindrome = (str) => {
  console.log(str);
@@ -275,4 +275,25 @@ const isPalindrome = (str) => {
     return isPalindrome(str.substring(1, str.length - 1));
   }
 }
-console.log(isPalindrome('radar'));
+console.log(isPalindrome('radar'));*/
+const substr = (str = '', begin = 0, subStrLength = str.length) => {
+  let result = ''
+  if (subStrLength < 0) {
+    subStrLength = 1;
+  } 
+  if (begin < 0) { 
+    begin = 1
+   }
+  if (begin > str.length) return result;
+  if (subStrLength === 0) return result;
+  if ((begin + subStrLength) > str.length) {
+   subStrLength = str.length - begin;
+  };
+  console.log(subStrLength)
+  console.log(begin)
+  for (let i = begin; i < subStrLength; i += 1) {
+    result += str[i];
+  }
+  return result; 
+}
+console.log(substr('abba', 1, 2))
