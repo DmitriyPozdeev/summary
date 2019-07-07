@@ -275,7 +275,7 @@ const isPalindrome = (str) => {
     return isPalindrome(str.substring(1, str.length - 1));
   }
 }
-console.log(isPalindrome('radar'));*/
+console.log(isPalindrome('radar'));
 const substr = (str = '', begin = 0, subStrLength = str.length) => {
   let result = ''
   if (subStrLength < 0) {
@@ -296,4 +296,16 @@ const substr = (str = '', begin = 0, subStrLength = str.length) => {
   }
   return result; 
 }
-console.log(substr('abba', 1, 2))
+console.log(substr('abba', 1, 2))*/
+
+apply = (amount, func, arg) => {
+  let result = func(arg);
+  if (amount === 0) return arg
+  for (let i = 1; i < amount; i += 1) {
+    result = func(result);
+  }
+  return result
+} 
+console.log(apply(0, v => v ** 2, 3)); // => 53
+apply(2, Math.sqrt, 16); // => 2
+// Math.sqrt(Math.sqrt(Math.sqrt(256)));
