@@ -296,7 +296,7 @@ const substr = (str = '', begin = 0, subStrLength = str.length) => {
   }
   return result; 
 }
-console.log(substr('abba', 1, 2))*/
+console.log(substr('abba', 1, 2))
 
 apply = (amount, func, arg) => {
   let result = func(arg);
@@ -308,4 +308,15 @@ apply = (amount, func, arg) => {
 } 
 console.log(apply(0, v => v ** 2, 3)); // => 53
 apply(2, Math.sqrt, 16); // => 2
-// Math.sqrt(Math.sqrt(Math.sqrt(256)));
+// Math.sqrt(Math.sqrt(Math.sqrt(256)));*/
+
+const apply = (amount, func, arg) => {
+  if (amount === 0) return arg;
+  if (amount > 0) {
+    return apply(amount - 1, func, func(arg));
+  }
+};
+console.log(apply(2, v => v ** 2, 3));
+
+const apply = (count, fn, value) =>
+  (count === 0 ? value : apply(count - 1, fn, fn(value)));
