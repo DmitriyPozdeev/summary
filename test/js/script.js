@@ -308,7 +308,7 @@ apply = (amount, func, arg) => {
 } 
 console.log(apply(0, v => v ** 2, 3)); // => 53
 apply(2, Math.sqrt, 16); // => 2
-// Math.sqrt(Math.sqrt(Math.sqrt(256)));*/
+// Math.sqrt(Math.sqrt(Math.sqrt(256)));
 
 const apply = (amount, func, arg) => {
   if (amount === 0) return arg;
@@ -320,3 +320,16 @@ console.log(apply(2, v => v ** 2, 3));
 
 const apply = (count, fn, value) =>
   (count === 0 ? value : apply(count - 1, fn, fn(value)));
+*/
+ const reverse = (str) => {
+    const lastIndex = str.length - 1;
+    // BEGIN (write your solution here)
+    const iter = (index, acc) => {
+      if (index <= lastIndex) {
+       return iter(index + 1, acc = `${str[index]}` + acc) ;
+      } else return acc
+    }
+    // END
+    return iter(0, '');
+  };
+  console.log(reverse('яюэ'));
