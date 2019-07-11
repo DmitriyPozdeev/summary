@@ -338,7 +338,7 @@ const flip = funct => (a, b) => funct(b, a);
   const sub = (a, b) => a - b;
 const reverseSub = flip(sub); 
 console.log(reverseSub);
-console.log (reverseSub(5, 4))*/
+console.log (reverseSub(5, 4))
 
 const partialApply = (f, arg2) => arg1 => f(arg1, arg2);
 
@@ -350,3 +350,16 @@ console.log(f1(10)); // => 100
 const f2 = partialApply((a, b) => a * b, 5);
 console.log(f2(2)); // => 10
 console.log(f2(5)); // => 25
+*/
+
+const True = () => one => two => one;
+const False = () => one => two => two;
+const If = func => one => two => func(func);
+console.log(True)
+const ConditionFunction = If(True);
+console.log(ConditionFunction)
+//(func) => one => two => func(one)
+console.log(ConditionFunction('one')('two')); // one
+
+//const ConditionFunction = If(False);
+//console.log(ConditionFunction('one')('two')); // two
