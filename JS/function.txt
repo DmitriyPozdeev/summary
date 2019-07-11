@@ -186,3 +186,47 @@ const f1 = generateDouble(Math.sqrt);
 Когда generateDouble закончила работу и вернула новую функцию, экземпляр функции generateDouble исчез, уничтожился вместе с используемыми внутри аргументами.
 
 Но та функция, которую вернула generateDouble все еще использует аргумент. В обычных условиях он бы навсегда исчез, но тут он «запомнился» или «замкнулся» внутри возвращенной функции. Технически внутренняя функция, как и любая другая в JS, связана со своим лексическим окружением, которое не пропадает, даже если функция покидает это окружение.
+
+ Частичное применение
+sum2 = sum 4
+sum2 1 1 -- 6
+sum2 3 2 -- 9
+
+const sum = (a, b, c) => a + b + c;
+
+// Берем исходную функцию sum и отдаем ее в функцию partialApply
+const sumWithFour = partialApply(sum, 4);
+sumWithFour(3, 1); // 8
+sumWithFour(10, 3); // 17
+
+const sumWithFourAndTwo = partialApply(sumWithFour, 2);
+sumWithFourAndTwo(3); // 9
+
+Функция partialApply принимает на вход исходную функцию и параметры которые нужно применить, а возвращает новую, частично примененную функцию.
+
+Вот как может выглядеть реализация partialApply для функций от трёх аргументов (таких как sum):
+
+const partialApply = (fn, arg1) => (arg2, arg3) => fn(arg1, arg2, arg3);
+
+Функция getAverageSalary вычисляет зарплату людей разных специальностей по всему миру.
+const salary1 = getAverageSalary('programmer', 'spain');
+const salary2 = getAverageSalary('programmer', 'russia');
+const salary3 = getAverageSalary('programmer', 'usa');
+
+Первым параметром функция принимает на вход название профессии, вторым — страну, на выходе — годовая зарплата. Все довольно примитивно, но часть данных дублируется. Вычисляется зарплата программистов в разных странах, что приводит к постоянному вызову функции с первым параметром programmer. В этом нет ничего криминального, но существует способ устранить подобное повторение. Убрать с помощью введения дополнительной константы.
+
+const job = 'programmer'
+const salary1 = getAverageSalary(job, 'spain');
+const salary2 = getAverageSalary(job, 'russia');
+const salary3 = getAverageSalary(job, 'usa');
+Название профессии больше не повторяется, но нам по-прежнему приходится подставлять его в каждый вывод. Здесь на помощь приходит так называемое частичное применение функции.
+
+const getProgrammersSalaryByCountry = country => getAverageSalary('programmer', country);
+
+const getProgrammersSalaryByCountry = partialApply(getAverageSalary, 'programmer');
+
+const salary1 = getProgrammersSalaryByCountry('spain');
+const salary2 = getProgrammersSalaryByCountry('russia');
+const salary3 = getProgrammersSalaryByCountry('usa');
+
+

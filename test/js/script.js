@@ -320,7 +320,7 @@ console.log(apply(2, v => v ** 2, 3));
 
 const apply = (count, fn, value) =>
   (count === 0 ? value : apply(count - 1, fn, fn(value)));
-*/
+
  const reverse = (str) => {
     const lastIndex = str.length - 1;
     // BEGIN (write your solution here)
@@ -333,3 +333,20 @@ const apply = (count, fn, value) =>
     return iter(0, '');
   };
   console.log(reverse('яюэ'));
+const flip = funct => (a, b) => funct(b, a);
+
+  const sub = (a, b) => a - b;
+const reverseSub = flip(sub); 
+console.log(reverseSub);
+console.log (reverseSub(5, 4))*/
+
+const partialApply = (f, arg2) => arg1 => f(arg1, arg2);
+
+const pow = (a, b) => a ** b;
+const f1 = partialApply(pow, 2);
+console.log(f1(1)); // => 1
+console.log(f1(10)); // => 100
+
+const f2 = partialApply((a, b) => a * b, 5);
+console.log(f2(2)); // => 10
+console.log(f2(5)); // => 25
