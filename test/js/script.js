@@ -350,16 +350,43 @@ console.log(f1(10)); // => 100
 const f2 = partialApply((a, b) => a * b, 5);
 console.log(f2(2)); // => 10
 console.log(f2(5)); // => 25
-*/
 
-const True = () => one => two => one;
-const False = () => one => two => two;
+Теперь вернемся к нашей функции расчета зарплаты в ее каррированном виде. Представим,
+ что теперь у нас в распоряжении две вложенных функции от одного аргумента:
+  const getAverageSalary = job => country => /*
+
+const salary1 = getAverageSalary('programmer')('spain');
+const salary2 = getAverageSalary('programmer')('russia');
+const salary3 = getAverageSalary('programmer')('usa');
+Попробуем частично применить:
+
+const getProgrammersSalaryByCountry = getAverageSalary('programmer');
+
+const salary1 = getProgrammersSalaryByCountry('spain');
+const salary2 = getProgrammersSalaryByCountry('russia');
+const salary3 = getProgrammersSalaryByCountry('usa');
+const True = () => one => two => one || two;
+const False = () => one => two => two || one;
 const If = func => one => two => func(func);
 console.log(True)
 const ConditionFunction = If(True);
 console.log(ConditionFunction)
-//(func) => one => two => func(one)
+
 console.log(ConditionFunction('one')('two')); // one
 
-//const ConditionFunction = If(False);
-//console.log(ConditionFunction('one')('two')); // two
+const ConditionFunction = If(False);
+console.log(ConditionFunction('one')('two')); // two
+
+//If(func)('one')('two');
+const True = (one, two) => (one || two);
+const False = (one, two) => one && two;
+const If = func => one => two => func(one, two);
+console.log(If(True)('1')('2'))
+console.log(True());
+*/
+const True = one => two => one || two;
+const False = one => two => one && two;
+(True)('1')('2')
+const If = func => one => two => func(one)(two);
+console.log(If(False)('1')('2'))
+
