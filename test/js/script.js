@@ -383,10 +383,19 @@ const False = (one, two) => one && two;
 const If = func => one => two => func(one, two);
 console.log(If(True)('1')('2'))
 console.log(True());
-*/
+
 const True = one => two => one || two;
 const False = one => two => one && two;
 (True)('1')('2')
 const If = func => one => two => func(one)(two);
 console.log(If(False)('1')('2'))
-
+*/
+const x = true, y = false;
+const test = () => {
+  let result;
+  
+    result = y || x;
+ 
+  return result;
+};
+console.log(test())

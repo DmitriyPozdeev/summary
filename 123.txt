@@ -1,0 +1,31 @@
+https://pristavkitut.ru/tcatalog_elem/340
+https://pristavkitut.ru/tcatalog_elem/473
+http://gotplay.ru/xbox-360-freeboot/785-wrc-5-god-eng.html
+https://pristavkitut.ru/tcatalog_elem/280
+https://pristavkitut.ru/tcatalog_elem/98
+https://pristavkitut.ru/tcatalog_elem/228
+http://gamesxbox.org/freeboot/4212-epic-mickey-2-the-power-of-two-freeboot-xbox360.html
+http://gaming-torrent.net/igri_na_xbox360/205-max-the-curse-of-brotherhood-2014-xbox360-freeboot.html
+https://pristavkitut.ru/tcatalog_elem/136
+https://pristavkitut.ru/tcatalog_elem/263
+
+export const has = (list, value) => {
+  if (typeof(list) !== 'function') {
+    return false
+  } 
+  if (head(list) === value) {
+   return true;
+  } else {
+    return has(tail(list), value);
+  }
+};
+
+export const reverse = (list) => {
+  let result = head(list);
+  cons(tail(result), result)
+ while (!isEmpty(tail(list))) {
+
+ }
+   result = l()
+  
+};
