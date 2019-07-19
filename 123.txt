@@ -8,24 +8,60 @@ http://gamesxbox.org/freeboot/4212-epic-mickey-2-the-power-of-two-freeboot-xbox3
 http://gaming-torrent.net/igri_na_xbox360/205-max-the-curse-of-brotherhood-2014-xbox360-freeboot.html
 https://pristavkitut.ru/tcatalog_elem/136
 https://pristavkitut.ru/tcatalog_elem/263
+https://pristavkitut.ru/tcatalog_elem/303
+http://gamesxbox.org/arcade/4500-the-legend-of-korra-xbox360.html
+http://gamesxbox.org/freeboot/12050-dragon-age-1-3-dlc-freeboot-repack-xbox360.html
+import {
+  l, isEmpty, head, tail, cons, reverse, toString
+} from '@hexlet/pairs-data';
 
-export const has = (list, value) => {
-  if (typeof(list) !== 'function') {
-    return false
-  } 
-  if (head(list) === value) {
-   return true;
-  } else {
-    return has(tail(list), value);
+import {
+  getName, getValue, node, is, make, append
+} from '@hexlet/html-tags';
+
+import { reverse as reverseStr } from './strings';
+
+
+
+
+const dom1 = make();
+const dom2 = append(dom1, node('h1', 'scheme'));
+const dom3 = append(dom2, node('p', 'is a lisp'));
+console.log(toString(dom3));
+// ќтображение в результате которого в html-списке замен€ютс€ теги h1 на теги h2
+const processedDom = map((element) => {
+  if (is('h1', element)) {
+    return node('h2', value(element));
   }
+  return element;
+}, dom3);
+console.log(toString(processedDom));
+// BEGIN (write your solution here)export const map = (func, elements) => {
+ const iter = (elements, acc) => {
+   if (isEmpty(elements)) {
+     return acc;
+   }
+   return iter(, cons(newElement, map(func, tail(elements))))
+ };
+iter(elements, l());
+const newElement = func(head(elements));
+ //return cons(newElement, map(func, tail(elements)))
+//};
+// END
+
+export const b2p = (elements) => {
+  if (isEmpty(elements)) {
+    return l();
+  }
+
+  let newElement;
+  const element = head(elements);
+  if (is('blockquote', element)) {
+    newElement = node('p', getValue(element));
+  } else {
+    newElement = element;
+  }
+
+  return cons(newElement, b2p(tail(elements)));
 };
 
-export const reverse = (list) => {
-  let result = head(list);
-  cons(tail(result), result)
- while (!isEmpty(tail(list))) {
-
- }
-   result = l()
-  
-};
