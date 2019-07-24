@@ -389,7 +389,7 @@ const False = one => two => one && two;
 (True)('1')('2')
 const If = func => one => two => func(one)(two);
 console.log(If(False)('1')('2'))
-*/
+
 const x = true, y = false;
 const test = () => {
   let result;
@@ -399,3 +399,80 @@ const test = () => {
   return result;
 };
 console.log(test())
+*/
+const maper = (func, str) => {
+  let i = 0;
+   const iter = (elements, acc) => {
+     if (elements.length === 0) {
+       return acc; 
+     }
+    // console.log(acc)
+     return iter(str.substring(i += 1), func(elements[0]) + acc);
+   };
+
+   return iter(str, '');
+ };
+ const test = 'test'
+ console.log(maper(() => {}, ''))
+
+
+
+
+ import {
+  l, isEmpty, head, tail, cons, reverse, toString
+} from '@hexlet/pairs-data';
+
+import {
+  getName, getValue, node, is, make, append
+} from '@hexlet/html-tags';
+
+import { reverse as reverseStr } from './strings';
+
+
+
+
+const dom1 = make();
+const dom2 = append(dom1, node('h1', 'scheme'));
+const dom3 = append(dom2, node('p', 'is a lisp'));
+console.log(toString(dom3));
+// Отображение в результате которого в html-списке заменяются теги h1 на теги h2
+//const processedDom = map((element) => {
+ // if (is('h1', element)) {
+ //   return node('h2', value(element));
+ // }
+//  return element;
+//}, dom3);
+//console.log(toString(processedDom));
+// BEGIN (write your solution here)export const map = (func, elements) => {
+ const map = (func, htmlList) => {
+   console.log(toString(htmlList))
+   const iter = (elements, acc) => {
+     if (isEmpty(elements)) {
+       return acc;
+     }
+     return iter(tail(elements), cons(func(head(elements)), acc));
+   };
+
+   return iter(htmlList, l());
+ };
+console.log(map((x) => x), dom3);
+//const newElement = func(head(elements));
+ //return cons(newElement, map(func, tail(elements)))
+//};
+// END
+
+export const b2p = (elements) => {
+  if (isEmpty(elements)) {
+    return l();
+  }
+
+  let newElement;
+  const element = head(elements);
+  if (is('blockquote', element)) {
+    newElement = node('p', getValue(element));
+  } else {
+    newElement = element;
+  }
+
+  return cons(newElement, b2p(tail(elements)));
+};

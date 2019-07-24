@@ -3,65 +3,53 @@ https://pristavkitut.ru/tcatalog_elem/473
 http://gotplay.ru/xbox-360-freeboot/785-wrc-5-god-eng.html
 https://pristavkitut.ru/tcatalog_elem/280
 https://pristavkitut.ru/tcatalog_elem/98
-https://pristavkitut.ru/tcatalog_elem/228
+https://pristavkitut.ru/tcatalog_elem/228 утиные ист
 http://gamesxbox.org/freeboot/4212-epic-mickey-2-the-power-of-two-freeboot-xbox360.html
-http://gaming-torrent.net/igri_na_xbox360/205-max-the-curse-of-brotherhood-2014-xbox360-freeboot.html
+http://gaming-torrent.net/igri_na_xbox360/205-max-the-curse-of-brotherhood-2014-xbox360-freeboot.html мики маус 
 https://pristavkitut.ru/tcatalog_elem/136
 https://pristavkitut.ru/tcatalog_elem/263
-https://pristavkitut.ru/tcatalog_elem/303
+https://pristavkitut.ru/tcatalog_elem/303 halo
 http://gamesxbox.org/arcade/4500-the-legend-of-korra-xbox360.html
 http://gamesxbox.org/freeboot/12050-dragon-age-1-3-dlc-freeboot-repack-xbox360.html
-import {
-  l, isEmpty, head, tail, cons, reverse, toString
-} from '@hexlet/pairs-data';
 
-import {
-  getName, getValue, node, is, make, append
-} from '@hexlet/html-tags';
+import { isEmpty, head, tail } from '@hexlet/pairs-data';
+import { getValue, is } from '@hexlet/html-tags';
 
-import { reverse as reverseStr } from './strings';
+// BEGIN (write your solution here)
+export const reduce = (func, acc, htmlList) => {
+  const iter = (items, acc) => {
+    if (isEmpty(items)) {
+      return acc;
+    }
 
+    const item = head(items);
+    const tailItems = tail(items);
+    if (func(item, acc)) {
+      return iter(tailItems, func(item, acc));
+    }
 
-
-
-const dom1 = make();
-const dom2 = append(dom1, node('h1', 'scheme'));
-const dom3 = append(dom2, node('p', 'is a lisp'));
-console.log(toString(dom3));
-// ќтображение в результате которого в html-списке замен€ютс€ теги h1 на теги h2
-const processedDom = map((element) => {
-  if (is('h1', element)) {
-    return node('h2', value(element));
-  }
-  return element;
-}, dom3);
-console.log(toString(processedDom));
-// BEGIN (write your solution here)export const map = (func, elements) => {
- const iter = (elements, acc) => {
-   if (isEmpty(elements)) {
-     return acc;
-   }
-   return iter(, cons(newElement, map(func, tail(elements))))
- };
-iter(elements, l());
-const newElement = func(head(elements));
- //return cons(newElement, map(func, tail(elements)))
-//};
+    return iter(tailItems, acc);
+  };
+  return iter(htmlList, acc)
+};
+export const  emptyTagsCount = (tagName, htmlList) => {
+  return reduce((element, acc) => {
+    return is(tagName === getName(element) && getValue === '')
+  } ? acc + 1 : acc, 0, htmlList);
+  
+};
 // END
 
-export const b2p = (elements) => {
-  if (isEmpty(elements)) {
-    return l();
-  }
+export const headersCount = (tagName, elements) => {
+  const iter = (items, acc) => {
+    if (isEmpty(items)) {
+      return acc;
+    }
 
-  let newElement;
-  const element = head(elements);
-  if (is('blockquote', element)) {
-    newElement = node('p', getValue(element));
-  } else {
-    newElement = element;
-  }
-
-  return cons(newElement, b2p(tail(elements)));
+    const item = head(items);
+    const newAcc = is(tagName, item) ? acc + 1 : acc;
+    return iter(tail(items), newAcc);
+  };
+  return iter(elements, 0);
 };
 
