@@ -41,10 +41,15 @@ diff(120, 280) === 160;*/
 
 Напишите функцию sumSquareDifference, которая принимает аргумент n
  и возвращает разницу между квадратом суммы и суммой квадратов первых n натуральных чисел.
-*/
+
 const sumSquareDifference = (n) => {
-  const iter = (item, acc) => {
-   
+  const iter = (item, acc1, acc2) => {
+    if (item === n + 1) {
+      return acc2 ** 2 - acc1;
+    }
+    return iter(item + 1, acc1 += item ** 2, acc2 += item);
   };
-  
+  return iter(0, 0, 0);
 };
+console.log(sumSquareDifference(10));
+*/
